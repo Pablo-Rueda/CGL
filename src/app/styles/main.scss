@@ -1,0 +1,19 @@
+
+// ABSTRACTS
+@import './abstracts/variables';
+
+
+// BASE
+@import './base/reset';
+@import './base/app';
+
+// GAME
+@import './components/game/game';
+
+.cell{
+    z-index: 1;
+    background-color: grey;
+}
+.cell:hover{
+    background-color: red;
+}
