@@ -20,7 +20,7 @@ const BoardContextProvider = (props) => {
     const { height, width } = getWindowDimensions();
 
     // default board parameters:
-    const cellSize = 13;
+    const cellSize = 20;
     const [boardProps, setBoardProps] = useState({
         cellSize,
         cols: Math.floor(width/(cellSize + 2)),
@@ -28,7 +28,7 @@ const BoardContextProvider = (props) => {
     });
 
     // board state
-    const filledBoard = new Array(boardProps.cols*boardProps.rows).fill(0);
+    const filledBoard = new Array(boardProps.cols*boardProps.rows).fill(false);
     const [board, setBoard] = useState(filledBoard);
     
 

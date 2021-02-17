@@ -10,18 +10,21 @@ const Board = () => {
     const {board,boardProps} = useContext(BoardContext);
 
     // style board:
-    const boardStyle = {
+    const boardStyle = { // style the board
         display:"grid",
         gridTemplateColumns:"repeat(" + boardProps.cols + ", 1fr)",
         gridTemplateRows: "repeat(" + boardProps.rows + ", 1fr)",
         gridGap: "1px",
         maxWidth:"100vw",
-        heigth: "100%"
+        heigth: "100%",
+        backgroundColor:"#9ACDE0"
     };
+    let cellId = board.length; // track the cell ID based on the total abount of cells = board length
     return ( 
         <div style={boardStyle}>
-            {board.map(cells =>{
-                return(<Cell />)
+            {board.map(cells =>{ 
+                cellId -=1;
+                return(<Cell key={cellId} cellId={cellId} />)
             })}
         </div>
      );
