@@ -2,7 +2,7 @@
 import React, {createContext, useEffect, useState} from 'react';
 
 // window parameters:
-function getWindowDimensions() {
+function getWindowDimensions() { // get dimensions of the window, used later to set the number of cells
     const { innerWidth: width, innerHeight: height } = window;
     return {
       width,
@@ -20,15 +20,15 @@ const BoardContextProvider = (props) => {
     const { height, width } = getWindowDimensions();
 
     // default board parameters:
-    const cellSize = 20;
-    const [boardProps, setBoardProps] = useState({
+    const cellSize = 20; // cells size in px
+    const [boardProps, setBoardProps] = useState({ // board - cells parameters
         cellSize,
-        cols: Math.floor(width/(cellSize + 2)),
-        rows: Math.floor(height/(cellSize + 2))
+        cols: Math.floor(width/(cellSize + 2)), // get number of cells - per column
+        rows: Math.floor(height/(cellSize + 2)) // get number of cells - per row
     });
 
     // board state
-    const filledBoard = new Array(boardProps.cols*boardProps.rows).fill(false);
+    const filledBoard = new Array(boardProps.cols*boardProps.rows).fill(false); // filled board template array -default state false since no cell should be active
     const [board, setBoard] = useState(filledBoard);
     
 

@@ -1,13 +1,17 @@
 import './styles/main.css';
-import BoardContextProvider from "./context/BoardContext"
-import Game from "./components/game/game"
+import BoardContextProvider from "./context/BoardContext";
+
+import Layout from "./components/layout/layout"
+import Game from "./components/game/game";
 
 function App() {
 
   return (
     <div className="app">
       <BoardContextProvider>
-        <Game />
+        <Layout>
+          <Game />
+        </Layout>
       </BoardContextProvider>   
     </div>
   );

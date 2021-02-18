@@ -11,11 +11,11 @@ const Cell = (props) => {
     }
  
     
-    const [cellStyle, setCellStyle] = useState({backgroundColor: "#5EA9EB"});
+    const [cellStyle, setCellStyle] = useState({backgroundColor: "#5EA9BE"});
 
     const cellOnClick = () =>{
 
-        setCellStyle(board[props.cellId] === true ? ({backgroundColor: "#5EA9EB"}):({backgroundColor: "#FFDDD3"}));
+        setCellStyle(board[props.cellId] === true ? ({backgroundColor: "#5EA9BE"}):({backgroundColor: "#FFDDD3"}));
         let boardCells = [...board];
         boardCells[props.cellId] = !boardCells[props.cellId];
         setBoard(boardCells);
