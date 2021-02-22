@@ -1,5 +1,5 @@
 import './styles/main.css';
-import BoardContextProvider from "./context/BoardContext";
+import GameContextProvider from "./context/GameContext";
 
 import Layout from "./components/layout/layout"
 import Game from "./components/game/game";
@@ -8,11 +8,11 @@ function App() {
 
   return (
     <div className="app">
-      <BoardContextProvider>
+      <GameContextProvider>
         <Layout>
           <Game />
         </Layout>
-      </BoardContextProvider>   
+      </GameContextProvider>   
     </div>
   );
 }
