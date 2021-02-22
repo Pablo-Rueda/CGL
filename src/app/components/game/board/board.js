@@ -7,7 +7,7 @@ import {GameContext} from "../../../context/GameContext"
 
 
 const Board = () => {
-    const {board, boardProps} = useContext(GameContext);
+    const {board,setBoard,time,nextFrame, boardProps, speed} = useContext(GameContext);
 
     // style board:
     const boardStyle = { // style the board
@@ -20,6 +20,18 @@ const Board = () => {
         backgroundColor:"#9ACDE0"
     };
     let cellId = board.length; // track the cell ID based on the total abount of cells = board length
+    
+    useEffect(() => { // run time at a board level to run the loop just once (avoid redundancy that would happend at cells level) 
+        if(time){// implement timer countdown with useEffect hook
+          const timer = setInterval(() => {
+            setBoard(nextFrame()) // set board to next frame function
+          }, speed);
+          return () => clearInterval(timer);
+        }else{
+          const timer = [];
+          return () => clearInterval(timer);
+        }
+      })
 
     return ( 
         <div style={boardStyle}>

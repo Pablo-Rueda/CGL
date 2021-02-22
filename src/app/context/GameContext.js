@@ -27,18 +27,29 @@ const GameContextProvider = (props) => {
         rows: Math.floor(height/(cellSize + 2)) // get number of cells - per row
     });
 
-    // board state
+
+
+    // initial board:
     const filledBoard = new Array(boardProps.cols*boardProps.rows).fill(false); // filled board template array -default state false since no cell should be active
-    const [board, setBoard] = useState(filledBoard);
     
+    filledBoard[Math.floor(3*filledBoard.length/4)+ boardProps.cols*2] = true;
+    filledBoard[Math.floor(3*filledBoard.length/4)+ boardProps.cols - 1] = true;
+    filledBoard[Math.floor(3*filledBoard.length/4) - 1] = true;
+    filledBoard[Math.floor(3*filledBoard.length/4)] = true;
+    filledBoard[Math.floor(3*filledBoard.length/4) +1] = true;
+
+    // board state
+    const [board, setBoard] = useState(filledBoard);
+    const [boardReset, setBoardReset] = useState(filledBoard);
     // time state
     const [time, setTime] = useState(false);
+    const [speed, setSpeed] = useState(100);
 
-    const nextFrame = () =>{ // function to run the game.
-        let updateBoard = []
+    const nextFrame = () =>{ // function to run the game
+        let updateBoard = []; 
         for(let i = 0; i<board.length; i++){
             let cellValue = (
-                ( (board[i - boardProps.cols - 1] !== undefined && board[i - boardProps.cols - 1] ) ? 1 : 0) +
+                (board[i - boardProps.cols - 1] !== undefined ? (board[i - boardProps.cols - 1] ? 1 : 0) : 0) +
                 (board[i - boardProps.cols] !== undefined ? (board[i - boardProps.cols] ? 1 : 0) : 0) +
                 (board[i - boardProps.cols + 1] !== undefined ? (board[i - boardProps.cols + 1] ? 1 : 0) : 0) +
                 (board[i - 1] !== undefined ? (board[i - 1] ? 1 : 0) : 0) +
@@ -58,15 +69,29 @@ const GameContextProvider = (props) => {
     }
 
     
+
+
+    const startGame = () => { // start game
+        if(!time){setBoardReset(board);}
+        const toggledTime = !time;
+        setTime(toggledTime);
+        
+    }
     const resetBoard = () => {
+        setTime(false);
+        setBoard(boardReset);
+        console.log(board == boardReset)
+    }
+    const cleanBoard = () => {
+        setTime(false);
         let boardCells = new Array(board.length).fill(false);
         setBoard(boardCells);
+        setBoardReset(boardCells);
+        
     }
 
-
-
     return ( 
-        <GameContext.Provider value={{boardProps,board,time,setTime, setBoard,nextFrame, resetBoard}} >
+        <GameContext.Provider value={{boardProps,board,time,setTime, setBoard,nextFrame, startGame, resetBoard, cleanBoard,speed, setSpeed }} >
             {props.children} 
         </GameContext.Provider>
      );
