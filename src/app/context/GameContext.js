@@ -43,7 +43,7 @@ const GameContextProvider = (props) => {
     const [boardReset, setBoardReset] = useState(filledBoard);
     // time state
     const [time, setTime] = useState(false);
-    const [speed, setSpeed] = useState(100);
+    const [speed, setSpeed] = useState(1000);
 
     const nextFrame = () =>{ // function to run the game
         let updateBoard = []; 

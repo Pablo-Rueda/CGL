@@ -25,6 +25,7 @@ const Board = () => {
         if(time){// implement timer countdown with useEffect hook
           const timer = setInterval(() => {
             setBoard(nextFrame()) // set board to next frame function
+            console.log("run")
           }, speed);
           return () => clearInterval(timer);
         }else{
