@@ -85,7 +85,7 @@ const Instructions = () => {
             <div>
                 <h1 style={{textAlign:"center", padding: "1% 0 0"}}> Conyways Game of Life</h1>
                 <p style={{margin:"0 5%"}} > 
-                    <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" style={{color:"#5EA9BE", textDecoration: "underline"}}>The Game of Life,</a> also 
+                    <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" style={{color:"#5EA9BE", textDecoration: "underline"}} target="_blank" >The Game of Life,</a> also 
                     known simply as Life, is a cellular automaton devised by the British mathematician 
                     John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial
                     state, requiring no further input. The state of a cell will change based on it neightbours.
@@ -101,6 +101,9 @@ const Instructions = () => {
             <div style={{margin: "3% 0 0", textAlign:"center"}}>
                 <Button variant="contained" style={{background:"#FFDDD3", color:"black"}} onClick={()=>{setInstructions(instructions+1)}}> Next </Button> 
             </div>
+            <div style={{margin: "25px 0", textAlign:"center"}}> <p>
+                See more of my work at <a href="https://pablorueda.com" target="_blank" style={{color:"#5EA9BE", textDecoration: "underline"}}>PabloRueda.com</a>
+            </p> </div>
         </div>
     );
     const guide = (
